@@ -16,6 +16,9 @@ $(document).ready(function () {
             themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         }
         localStorage.setItem('theme', theme);
+        if (typeof initParticles === 'function') {
+            initParticles();
+        }
     }
 
     applyTheme(savedTheme);

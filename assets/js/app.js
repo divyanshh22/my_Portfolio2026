@@ -11,8 +11,12 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-particlesJS('particles-js',
-  
+function initParticles() {
+  var isDark = document.body.classList.contains('dark');
+  var pColor = isDark ? '#38d0ee' : '#4161e6';
+
+  particlesJS('particles-js',
+
   {
     "particles": {
       "number": {
@@ -23,13 +27,13 @@ particlesJS('particles-js',
         }
       },
       "color": {
-        "value": "#000000"
+        "value": pColor
       },
       "shape": {
         "type": "circle",
         "stroke": {
           "width": 0,
-          "color": "#000000"
+          "color": pColor
         },
         "polygon": {
           "nb_sides": 5
@@ -63,7 +67,7 @@ particlesJS('particles-js',
       "line_linked": {
         "enable": true,
         "distance": 150,
-        "color": "#000000",
+        "color": pColor,
         "opacity": 0.4,
         "width": 1
       },
@@ -130,4 +134,7 @@ particlesJS('particles-js',
     }
   }
 
-);
+  );
+}
+
+initParticles();
