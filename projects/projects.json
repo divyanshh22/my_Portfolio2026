@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Inventory & Order Management System",
+    "desc": "Multi-vendor inventory system with real-time stock tracking, automated low-stock alerts, invoice generation, and Celery-based scheduled tasks. Built with Django REST Framework and PostgreSQL.",
+    "image": "inventory",
+    "category": "mern",
+    "links": {
+      "view": "https://inventory-order-management-system-gttj.onrender.com",
+      "code": "https://github.com/divyanshh22/Inventory-Order-Management-System"
+    }
+  },
+  {
+    "name": "E-Commerce Website",
+    "desc": "Full-Stack E-Commerce web application built with LAMP Stack. Includes user authentication, product listing, cart, and payment gateway.",
+    "image": "flipkartphp",
+    "category": "lamp",
+    "links": {
+      "view": "https://full-stack-e-commerce-platform-6gy3.onrender.com/",
+      "code": "https://github.com/divyanshh22/Full-Stack-E-Commerce-Platform"
+    }
+  },
+  {
+    "name": "Django Chat Application",
+    "desc": "Real-time Django chat app with authentication and messaging.",
+    "image": "webchat",
+    "category": "lamp",
+    "links": {
+      "view": "https://django-real-time-chat-application.onrender.com/",
+      "code": "https://github.com/divyanshh22/Django-Real-Time-Chat-Application"
+    }
+  },
+  {
+    "name": "College ERP System",
+    "desc": "Comprehensive student management system with attendance tracking and academic records. Deployed for 100+ students with admin dashboard.",
+    "image": "erp",
+    "category": "mern",
+    "links": {
+      "view": "https://college-erp-system-t5uy.onrender.com",
+      "code": "https://github.com/divyanshh22/College-ERP-System"
+    }
+  }
+]
