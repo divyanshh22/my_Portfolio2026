@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Python",
+    "icon": "https://cdn.simpleicons.org/python/3776AB"
+  },
+  {
+    "name": "JavaScript",
+    "icon": "https://cdn.simpleicons.org/javascript/F7DF1E"
+  },
+  {
+    "name": "Java",
+    "icon": "fab fa-java"
+  },
+  {
+    "name": "Django",
+    "icon": "https://cdn.simpleicons.org/django/092E20"
+  },
+  {
+    "name": "Django REST Framework",
+    "icon": "https://cdn.simpleicons.org/django/092E20"
+  },
+  {
+    "name": "Flask",
+    "icon": "https://cdn.simpleicons.org/flask/000000"
+  },
+  {
+    "name": "Tkinter",
+    "icon": "fas fa-window-maximize"
+  },
+  {
+    "name": "Django Channels",
+    "icon": "fas fa-comments"
+  },
+  {
+    "name": "HTML",
+    "icon": "https://cdn.simpleicons.org/html5/E34F26"
+  },
+  {
+    "name": "CSS",
+    "icon": "fab fa-css3-alt"
+  },
+  {
+    "name": "Bootstrap",
+    "icon": "https://cdn.simpleicons.org/bootstrap/7952B3"
+  },
+  {
+    "name": "PostgreSQL",
+    "icon": "https://cdn.simpleicons.org/postgresql/4169E1"
+  },
+  {
+    "name": "MySQL",
+    "icon": "https://cdn.simpleicons.org/mysql/4479A1"
+  },
+  {
+    "name": "SQLite",
+    "icon": "https://cdn.simpleicons.org/sqlite/003B57"
+  },
+  {
+    "name": "Git",
+    "icon": "https://cdn.simpleicons.org/git/F05032"
+  },
+  {
+    "name": "GitHub",
+    "icon": "https://cdn.simpleicons.org/github/181717"
+  },
+  {
+    "name": "Docker",
+    "icon": "https://cdn.simpleicons.org/docker/2496ED"
+  },
+  {
+    "name": "Nginx",
+    "icon": "https://cdn.simpleicons.org/nginx/009639"
+  },
+  {
+    "name": "Gunicorn",
+    "icon": "https://cdn.simpleicons.org/gunicorn/EF0100"
+  },
+  {
+    "name": "Cloudinary",
+    "icon": "https://cdn.simpleicons.org/cloudinary/3448C5"
+  },
+  {
+    "name": "Render",
+    "icon": "https://cdn.simpleicons.org/render/46E3B7"
+  },
+  {
+    "name": "Redis",
+    "icon": "https://cdn.simpleicons.org/redis/FF4438"
+  },
+  {
+    "name": "Celery",
+    "icon": "https://cdn.simpleicons.org/celery/37814A"
+  },
+  {
+    "name": "WebSockets",
+    "icon": "fas fa-wifi"
+  },
+  {
+    "name": "REST APIs",
+    "icon": "fas fa-plug"
+  }
+]
