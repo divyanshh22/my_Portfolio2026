@@ -1743,6 +1743,30 @@ form .button-area {
 }
 /* footer section ends */
 
+/* ============================================================
+   MOBILE VISIBILITY FAIL-SAFE
+   Any content that ScrollReveal may have hidden (inline opacity/transform)
+   on a desktop-sized load is force-shown on small screens. This guarantees
+   nothing is ever faint or invisible on mobile/tablet, without changing the
+   desktop reveal animation. ============================================================ */
+@media screen and (max-width: 768px) {
+  .home .content,
+  .home .image,
+  .about .row .content,
+  .about .row .image,
+  .skills .container,
+  .skills .container .bar,
+  .education .box,
+  .work .box,
+  .certificates .box,
+  .contact .container,
+  .contact .container .form-group {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
 /* common media queries starts*/
 @media (max-width: 450px) {
   html {

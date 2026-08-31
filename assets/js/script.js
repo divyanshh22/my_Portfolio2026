@@ -248,15 +248,17 @@ function showProjects(projects) {
     // <!-- tilt js effect ends -->
 
     /* ===== SCROLL REVEAL ANIMATION ===== */
-    const srtop = ScrollReveal({
-        origin: 'top',
-        distance: '80px',
-        duration: 1000,
-        reset: true
-    });
+    if (window.innerWidth > 768) {
+        const srtop = ScrollReveal({
+            origin: 'top',
+            distance: '80px',
+            duration: 1000,
+            reset: true
+        });
 
-    /* SCROLL PROJECTS */
-    srtop.reveal('.work .box', { interval: 200 });
+        /* SCROLL PROJECTS */
+        srtop.reveal('.work .box', { interval: 200 });
+    }
 
 }
 
@@ -290,51 +292,57 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
 // pre loader end
 
 
-/* ===== SCROLL REVEAL ANIMATION ===== */
-const srtop = ScrollReveal({
-    origin: 'top',
-    distance: '80px',
-    duration: 1000,
-    reset: true
-});
+/* ===== SCROLL REVEAL ANIMATION =====
+   Only run the hide-then-reveal animation on larger (desktop) screens.
+   On mobile/tablet ScrollReveal leaves content faint/invisible because the
+   IntersectionObserver reveal does not fire reliably there (reset:true re-hides
+   elements while scrolling). Keeping content always visible on small screens
+   guarantees it is readable. Desktop behaviour is unchanged. */
+if (window.innerWidth > 768) {
+    const srtop = ScrollReveal({
+        origin: 'top',
+        distance: '80px',
+        duration: 1000,
+        reset: true
+    });
 
-/* SCROLL HOME */
-srtop.reveal('.home .content h3', { delay: 200 });
-srtop.reveal('.home .content p', { delay: 200 });
-srtop.reveal('.home .content .btn', { delay: 200 });
+    /* SCROLL HOME */
+    srtop.reveal('.home .content h3', { delay: 200 });
+    srtop.reveal('.home .content p', { delay: 200 });
+    srtop.reveal('.home .content .btn', { delay: 200 });
 
-srtop.reveal('.home .image', { delay: 400 });
-srtop.reveal('.home .linkedin', { interval: 600 });
-srtop.reveal('.home .github', { interval: 800 });
-srtop.reveal('.home .twitter', { interval: 1000 });
-srtop.reveal('.home .telegram', { interval: 600 });
-srtop.reveal('.home .instagram', { interval: 600 });
-srtop.reveal('.home .dev', { interval: 600 });
+    srtop.reveal('.home .image', { delay: 400 });
+    srtop.reveal('.home .linkedin', { interval: 600 });
+    srtop.reveal('.home .github', { interval: 800 });
+    srtop.reveal('.home .twitter', { interval: 1000 });
+    srtop.reveal('.home .telegram', { interval: 600 });
+    srtop.reveal('.home .instagram', { interval: 600 });
+    srtop.reveal('.home .dev', { interval: 600 });
 
-/* SCROLL ABOUT */
-srtop.reveal('.about .content h3', { delay: 200 });
-srtop.reveal('.about .content .tag', { delay: 200 });
-srtop.reveal('.about .content p', { delay: 200 });
-srtop.reveal('.about .content .box-container', { delay: 200 });
-srtop.reveal('.about .content .resumebtn', { delay: 200 });
+    /* SCROLL ABOUT */
+    srtop.reveal('.about .content h3', { delay: 200 });
+    srtop.reveal('.about .content .tag', { delay: 200 });
+    srtop.reveal('.about .content p', { delay: 200 });
+    srtop.reveal('.about .content .box-container', { delay: 200 });
+    srtop.reveal('.about .content .resumebtn', { delay: 200 });
 
+    /* SCROLL SKILLS */
+    srtop.reveal('.skills .container', { interval: 200 });
+    srtop.reveal('.skills .container .bar', { delay: 400 });
 
-/* SCROLL SKILLS */
-srtop.reveal('.skills .container', { interval: 200 });
-srtop.reveal('.skills .container .bar', { delay: 400 });
+    /* SCROLL EDUCATION */
+    srtop.reveal('.education .box', { interval: 200 });
 
-/* SCROLL EDUCATION */
-srtop.reveal('.education .box', { interval: 200 });
+    /* SCROLL PROJECTS */
+    srtop.reveal('.work .box', { interval: 200 });
 
-/* SCROLL PROJECTS */
-srtop.reveal('.work .box', { interval: 200 });
+    /* SCROLL CERTIFICATES */
+    srtop.reveal('.certificates .box', { interval: 200 });
 
-/* SCROLL CERTIFICATES */
-srtop.reveal('.certificates .box', { interval: 200 });
-
-/* SCROLL CONTACT */
-srtop.reveal('.contact .container', { delay: 400 });
-srtop.reveal('.contact .container .form-group', { delay: 400 });
+    /* SCROLL CONTACT */
+    srtop.reveal('.contact .container', { delay: 400 });
+    srtop.reveal('.contact .container .form-group', { delay: 400 });
+}
 
 /* CERTIFICATES - Google Drive links (edit these two variables) */
 const certificate1Link = "https://drive.google.com/file/d/1Ch-MuYka8R1TZ23NsIU7qyrpRl11k1Qv/view?usp=sharing";
