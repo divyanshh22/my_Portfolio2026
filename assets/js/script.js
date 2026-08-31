@@ -214,19 +214,26 @@ function showProjects(projects) {
     let projectHTML = "";
 
     visibleProjects.forEach(project => {
+        const tech = (project.tech && project.tech.length)
+            ? project.tech.map(t => `<span class="tech">${t}</span>`).join("")
+            : "";
+        const techBlock = tech
+            ? `<div class="tech-stack"><h4>Tech Stack</h4><div class="chips">${tech}</div></div>`
+            : "";
+        const dateLine = project.date ? `<h4 class="date">${project.date}</h4>` : "";
         projectHTML += `
         <div class="box tilt">
-      <img draggable="false" src="assets/images/projects/${project.image}.png" alt="${project.name}" />
+      <div class="image">
+        <img draggable="false" src="assets/images/projects/${project.image}.png" alt="${project.name}" />
+      </div>
       <div class="content">
-        <div class="tag">
         <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
+        ${dateLine}
+        <p class="desc">${project.desc}</p>
+        ${techBlock}
+        <div class="btns">
+          <a href="${project.links.view}" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye"></i> View Project</a>
+          <a href="${project.links.code}" class="btn" target="_blank" rel="noopener noreferrer">GitHub Code <i class="fas fa-code"></i></a>
         </div>
       </div>
     </div>`

@@ -1083,88 +1083,127 @@ header #theme-toggle {
   color: var(--accent);
 }
 .work .box-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin: 2rem;
-}
-@media screen and (max-width: 600px) {
-  .work .box-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .work .box-container .box {
-  width: 100%;
-  height: 30rem;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  text-align: center;
   position: relative;
+  margin-top: 2rem;
   overflow: hidden;
+  transition: 0.3s;
+  background: var(--bg-card);
 }
 .work .box-container .box:hover {
+  transform: translateY(-4px) scale(1.01);
   box-shadow: var(--shadow-strong);
   border-color: var(--accent);
 }
-.work .box-container .box img {
-  height: 100%;
+.work .box-container .box .image {
+  flex: 1 1 20rem;
   width: 100%;
+  background: var(--bg-card-alt);
+}
+.work .box-container .box .image img {
   object-fit: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 .work .box-container .box .content {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 25%;
-  left: 0;
-  background: linear-gradient(to bottom, rgba(10, 17, 32, 0.58) 0%, rgba(10, 17, 32, 0.82) 100%);
-  display: flex;
-  flex-direction: column;
-}
-.work .box-container .box .content .tag {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 4.5rem;
-  width: 100%;
-  padding-left: 1rem;
-  background: transparent;
-}
-.work .box-container .box .content .tag h3 {
-  font-size: 2rem;
-  color: #f8fafc;
-}
-.work .desc {
-  margin: 2rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+  flex: 1 1 70rem;
+  text-transform: none;
+  text-align: left;
 }
-.work .desc p {
+.work .box-container .box .content h3 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  padding: 0.5rem 0;
+  font-weight: 600;
+  text-align: left;
+}
+.work .box-container .box .content .desc {
   font-size: 1.5rem;
-  color: #e2e8f0;
+  margin: 0.5rem 0;
+  text-align: left;
+  color: var(--text-secondary);
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.work .box-container .box .content .date {
+  font-size: 1.6rem;
+  color: var(--accent-secondary);
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
   text-transform: none;
 }
-.work .desc .btns {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 2rem;
+.work .box-container .box .content .tech-stack h4 {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  margin: 1rem 0 0.4rem 0;
+  text-transform: none;
 }
-.work .desc .btns .btn {
-  line-height: 0;
-  display: inline;
-  padding: 1.5rem 2.5rem;
+.work .box-container .box .content .tech-stack .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.work .box-container .box .content .tech-stack .tech {
+  font-size: 1.2rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+}
+.work .box-container .box .content .btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.work .box-container .box .content .btns .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+  padding: 1.2rem 2.2rem;
   border-radius: 0.5rem;
   font-size: 1.5rem;
   color: var(--on-accent);
   background: var(--accent);
-  margin-right: 2rem;
+  box-shadow: 0px 5px 12px rgba(65, 97, 230, 0.3);
+  font-family: "Nunito", sans-serif;
+  transition: 0.3s;
+  text-transform: capitalize;
+}
+.work .box-container .box .content .btns .btn i {
+  font-size: 1.4rem;
   transition: 0.3s;
 }
-.work .desc .btns .btn:hover {
+.work .box-container .box .content .btns .btn:hover {
   background: var(--accent-strong);
   transform: translateY(-2px);
 }
@@ -1202,6 +1241,44 @@ header #theme-toggle {
 .work .viewall .btn:hover i {
   transform: translateX(5px);
 }
+.work .no-projects {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2rem 0;
+}
+/* work media queries starts */
+@media screen and (max-width: 600px) {
+  .work .box-container .box {
+    flex-direction: column;
+    width: 100%;
+  }
+  .work .box-container .box .image {
+    width: 100%;
+    height: 24rem;
+  }
+  .work .box-container .box .image img {
+    width: 100%;
+    height: 100%;
+  }
+  .work .box-container .box .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.2rem;
+    flex-wrap: wrap;
+    flex: 0;
+  }
+  .work .box-container .box .content .btns {
+    gap: 0.8rem;
+  }
+  .work .box-container .box .content .btns .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+/* work media queries ends */
 /* work section ends */
 
 /* experience section starts */
@@ -1307,11 +1384,15 @@ header #theme-toggle {
 .morebtn {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
 .morebtn .btn {
-  position: relative;
-  line-height: 0;
-  padding: 1.6rem 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.2;
+  padding: 1.5rem 3rem;
   border-radius: 0.5em;
   transition: 0.5s;
   color: var(--on-accent);
@@ -1320,13 +1401,17 @@ header #theme-toggle {
   text-align: center;
 }
 .morebtn .btn span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 600;
   font-size: 1.7rem;
   font-family: "Nunito", sans-serif;
+  text-transform: capitalize;
+  line-height: 1.2;
 }
 .morebtn .btn i {
-  margin-left: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   transition: 0.3s;
 }
 .morebtn .btn:hover {
@@ -1335,6 +1420,20 @@ header #theme-toggle {
 }
 .morebtn .btn:hover i {
   transform: translateX(5px);
+}
+@media screen and (max-width: 600px) {
+  .morebtn {
+    margin-top: 2.5rem;
+    padding: 0 0.5rem;
+  }
+  .morebtn .btn {
+    width: 100%;
+    padding: 1.4rem 2rem;
+    text-align: center;
+  }
+  .morebtn .btn span {
+    font-size: 1.5rem;
+  }
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
@@ -1657,6 +1756,72 @@ form .button-area {
   }
 }
 /* common media queries ends*/
+
+/* ============================================================
+   MOBILE LAYOUT REFINEMENTS (all sections)
+   ============================================================ */
+/* tighten the header so nav + toggles fit small widths */
+@media screen and (max-width: 768px) {
+  header {
+    gap: 1.2rem;
+    padding: 1.7rem 2rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home .content h2,
+  .home .content h2 span {
+    font-size: 3.6rem;
+    line-height: 1.2;
+  }
+  .home .content p,
+  .home .content p span {
+    font-size: 1.9rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  header {
+    padding: 1.4rem 1.5rem;
+    gap: 1rem;
+  }
+  header .logo {
+    font-size: 1.6rem;
+    gap: 0.6rem;
+  }
+  header .logo .logo-text {
+    font-size: 1.6rem;
+  }
+  .home .image img {
+    margin-left: 0;
+    margin-top: 0;
+    width: 85%;
+  }
+  .home .content h2,
+  .home .content h2 span {
+    font-size: 3rem;
+  }
+  .home .content p,
+  .home .content p span {
+    font-size: 1.7rem;
+  }
+  .heading {
+    font-size: 2.8rem;
+  }
+}
+/* very small phones */
+@media screen and (max-width: 340px) {
+  header .logo {
+    gap: 0.4rem;
+  }
+  header .theme-toggle {
+    width: 3.4rem;
+    height: 3.4rem;
+    font-size: 1.6rem;
+  }
+  .home .content h2,
+  .home .content h2 span {
+    font-size: 2.6rem;
+  }
+}
 
 /* scroll top starts */
 #scroll-top {
