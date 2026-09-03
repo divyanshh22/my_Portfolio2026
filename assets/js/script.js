@@ -5,30 +5,8 @@ $(document).ready(function () {
         $('.navbar').toggleClass('nav-toggle');
     });
 
-    // theme toggle dark/light mode
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const savedTheme = localStorage.getItem('theme') || 'light';
-
-    function applyTheme(theme) {
-        document.body.classList.toggle('dark', theme === 'dark');
-        if (themeIcon) {
-            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-        localStorage.setItem('theme', theme);
-        if (typeof initParticles === 'function') {
-            initParticles();
-        }
-    }
-
-    applyTheme(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function () {
-            const isDark = document.body.classList.contains('dark');
-            applyTheme(isDark ? 'light' : 'dark');
-        });
-    }
+    // Dark mode is the only theme; no theme switching.
+    document.body.classList.add('dark');
 
     // background music toggle
     const bgMusic = document.getElementById('bg-music');

@@ -12,8 +12,7 @@ particlesJS.load('particles-js', 'particles.json', function() {
 /* Otherwise just put the config content (json): */
 
 function initParticles() {
-  var isDark = document.body.classList.contains('dark');
-  var pColor = isDark ? '#38d0ee' : '#4161e6';
+  var pColor = '#38d0ee';
 
   particlesJS('particles-js',
 

@@ -5,36 +5,7 @@
    COLOR SYSTEM (centralized tokens)
    ============================================================ */
 :root {
-  /* backgrounds */
-  --bg-primary: #f4f7fb;
-  --bg-secondary: #e9eff8;
-  --bg-card: #ffffff;
-  --bg-card-alt: #f6f9fd;
-  --bg-input: #ffffff;
-  /* text */
-  --text-primary: #0f172a;
-  --text-secondary: #3b4760;
-  --text-muted: #64748b;
-  /* accents */
-  --accent: #4161e6;
-  --accent-strong: #3350d1;
-  --accent-soft: rgba(65, 97, 230, 0.1);
-  --accent-secondary: #0d9bb5;
-  --on-accent: #ffffff;
-  /* borders & shadows */
-  --border: #dfe7f2;
-  --border-strong: #c3d0e5;
-  --shadow: 0 6px 18px rgba(15, 23, 42, 0.07);
-  --shadow-strong: 0 12px 30px rgba(15, 23, 42, 0.13);
-  /* chrome */
-  --header-bg: #ffffff;
-  --footer-bg: #111a2e;
-  --footer-text: #cbd5e1;
-  --footer-muted: #94a3b8;
-  --selection: #4161e6;
-}
-
-body.dark {
+  /* ============ DARK MODE (default, only) ============ */
   /* backgrounds */
   --bg-primary: #0a1120;
   --bg-secondary: #0e1730;
@@ -62,6 +33,8 @@ body.dark {
   --footer-text: #cbd5e1;
   --footer-muted: #94a3b8;
   --selection: #6d8dff;
+  /* on-accent fallback used by brand-mark / buttons over the accent gradient */
+  --on-accent-solid: #ffffff;
 }
 
 * {
@@ -309,8 +282,8 @@ header .navbar ul li a:hover {
 .theme-toggle:hover {
   transform: scale(1.1);
 }
-/* push the theme + sound toggle cluster to the far right */
-header #theme-toggle {
+/* push the sound toggle to the far right */
+header #sound-toggle {
   margin-left: auto;
 }
 /* sound / music toggle button */
@@ -473,21 +446,72 @@ header #theme-toggle {
 /* social icons end */
 
 /* hero media queries starts*/
-@media (max-width: 450px) {
-  .home .btn {
-    margin: 4rem 0;
+@media (max-width: 1000px) {
+  .home {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 9rem;
+    gap: 2.5rem;
   }
-  .socials {
-    margin-top: 12rem;
+  .home .content {
+    flex: 1 1 auto;
+    width: 100%;
+    padding-top: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .home .image {
+    flex: 1 1 auto;
+    width: 100%;
+    order: 3;
+    display: flex;
+    justify-content: center;
   }
   .home .image img {
-    margin-top: -12rem;
+    margin-left: 0;
+    margin-top: 0;
+    width: 24rem;
+    max-width: 80%;
+    height: auto;
   }
+  .home .content .btn {
+    position: static;
+    margin: 1rem auto 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .socials {
+    margin-top: 1.5rem;
+  }
+  .socials .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  .socials .social-icons li {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 450px) {
   .home .content p {
     font-size: 2.2rem;
   }
   .home .content p span {
     font-size: 2.2rem;
+  }
+}
+
+/* tablet hero sizing */
+@media (min-width: 601px) and (max-width: 1000px) {
+  .home .content h2,
+  .home .content h2 span {
+    font-size: 4.2rem;
+  }
+  .home .image img {
+    width: 26rem;
   }
 }
 /* hero media queries ends*/
@@ -497,14 +521,19 @@ header #theme-toggle {
 .about {
   background: var(--bg-secondary);
   min-height: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.about .heading {
+  margin-bottom: 2.5rem;
 }
 .about .row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-wrap: nowrap;
-  padding: 2rem 3rem;
+  padding: 1rem 3rem;
 }
 .about .row .image {
   text-align: center;
@@ -660,27 +689,27 @@ header #theme-toggle {
 }
 /* about media queries starts*/
 @media screen and (max-width: 600px) {
-  .about .row .image {
-    margin-top: 2rem;
+  .about {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
-  .about .row .image img {
-    margin: 0 auto;
-    width: 80%;
-    mix-blend-mode: normal;
+  .about .heading {
+    margin-bottom: 2rem;
   }
   .about .row {
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
-    padding: 0.5rem;
-    margin-bottom: 7rem;
-  }
-  .about .row .content {
+    gap: 3rem;
     padding: 1rem;
   }
-  .about .row .content .box-container {
-    gap: 0;
+  .about .row .image {
+    margin-top: 0;
+    text-align: center;
   }
   .about .row .image .avatar-wrap {
     left: 0;
+    margin: 0 auto 0 auto;
   }
   .about .row .image .avatar-wrap .avatar {
     width: 19rem;
@@ -701,15 +730,40 @@ header #theme-toggle {
     width: 2.5rem;
     height: 2.5rem;
   }
+  .about .row .content {
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .about .row .content .box-container {
+    gap: 0;
+    justify-content: center;
+  }
+  .about .row .content .resumebtn,
+  .about .row .content .box-container {
+    display: flex;
+    justify-content: center;
+  }
+  .about .row .content h3,
+  .about .row .content .tag {
+    margin-top: 0.5rem;
+  }
+  .about .row .content p {
+    text-align: center;
+  }
 }
 
 /* about tablet queries starts */
 @media screen and (min-width: 601px) and (max-width: 950px) {
   .about .row {
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 3rem;
+    padding: 1rem 2rem;
   }
   .about .row .image .avatar-wrap {
     left: 0;
+    margin: 0 auto 0 auto;
   }
   .about .row .image .avatar-wrap .avatar {
     width: 22rem;
@@ -729,6 +783,18 @@ header #theme-toggle {
   .about .row .image .avatar-wrap .orbit .icon img {
     width: 2.7rem;
     height: 2.7rem;
+  }
+  .about .row .content {
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .about .row .content p {
+    text-align: center;
+  }
+  .about .row .content .resumebtn,
+  .about .row .content .box-container {
+    display: flex;
+    justify-content: center;
   }
 }
 /* about tablet queries ends */
@@ -1768,6 +1834,11 @@ form .button-area {
 }
 
 /* common media queries starts*/
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 3rem;
+  }
+}
 @media (max-width: 450px) {
   html {
     font-size: 55%;
@@ -1776,7 +1847,7 @@ form .button-area {
     padding-right: 0;
   }
   section {
-    padding: 2rem;
+    padding: 3rem 1.5rem;
   }
 }
 /* common media queries ends*/
@@ -1817,7 +1888,8 @@ form .button-area {
   .home .image img {
     margin-left: 0;
     margin-top: 0;
-    width: 85%;
+    width: 18rem;
+    max-width: 75%;
   }
   .home .content h2,
   .home .content h2 span {
@@ -1866,18 +1938,11 @@ form .button-area {
 }
 /* scroll top ends */
 
-/* dark mode starts */
-/* The centralized custom properties on body.dark handle all dark-theme colors.
-   Only a few component-specific ornaments need extra rules below. */
-body.dark {
-  background: var(--bg-primary);
-}
 /* keep GitHub / Django platform icons legible in dark mode */
-body.dark .about .row .image .avatar-wrap .orbit .icon img.gh {
+.about .row .image .avatar-wrap .orbit .icon img.gh {
   filter: brightness(0) invert(1);
 }
-body.dark .about .row .image .avatar-wrap .orbit .icon img.dj {
+.about .row .image .avatar-wrap .orbit .icon img.dj {
   filter: brightness(1.7) saturate(1.4);
 }
-/* dark mode ends */
 
