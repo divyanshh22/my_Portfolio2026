@@ -386,7 +386,29 @@
     }
   };
 
+  // EmailJS config — contact form submissions go straight to divyansh222f@gmail.com
+  const EMAILJS_CONFIG = {
+    publicKey: 'VPAUZ6fH6wWkN48pE',
+    serviceId: 'service_m1b44of',
+    templateId: 'template_lp82llc'
+  };
+
   const ContactModule = {
+    sending: false,
+
+    setStatus(status, message, type) {
+      if (!status) {
+        return;
+      }
+
+      status.textContent = message;
+      status.classList.remove('is-success', 'is-error');
+
+      if (type) {
+        status.classList.add(type);
+      }
+    },
+
     init() {
       const form = document.getElementById('contactForm');
       const status = document.getElementById('formStatus');
@@ -395,7 +417,12 @@
         return;
       }
 
+      if (window.emailjs && typeof window.emailjs.init === 'function') {
+        window.emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+      }
+
       const fields = Array.from(form.querySelectorAll('.form-control'));
+      const submitButton = form.querySelector('button[type="submit"]');
 
       fields.forEach((field) => {
         field.addEventListener('input', () => {
@@ -411,14 +438,11 @@
       });
 
       form.addEventListener('submit', (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          form.classList.add('was-validated');
+        event.preventDefault();
 
-          if (status) {
-            status.textContent = 'Please complete the highlighted fields.';
-            status.classList.add('is-error');
-          }
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          this.setStatus(status, 'Please complete the highlighted fields.', 'is-error');
 
           const firstInvalid = form.querySelector(':invalid');
           if (firstInvalid) {
@@ -427,32 +451,64 @@
           return;
         }
 
-        const action = form.getAttribute('action') || '';
-        const isPlaceholderAction = action.includes('your-form-id');
-
-        if (!isPlaceholderAction) {
-          form.classList.add('was-validated');
+        if (this.sending) {
           return;
         }
 
-        event.preventDefault();
         const data = new FormData(form);
         const name = String(data.get('name') || '').trim();
         const email = String(data.get('email') || '').trim();
         const message = String(data.get('message') || '').trim();
-        const subject = encodeURIComponent(`Portfolio message from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
 
-        window.location.href = `mailto:divyansh222f@gmail.com?subject=${subject}&body=${body}`;
+        // Fallback: EmailJS SDK fail to load ho to mailto khul jaye
+        if (!window.emailjs || typeof window.emailjs.send !== 'function') {
+          const subject = encodeURIComponent(`Portfolio message from ${name}`);
+          const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
 
-        if (status) {
-          status.textContent = 'Opening your email app. You can also email divyansh222f@gmail.com directly.';
-          status.classList.remove('is-error');
-          status.classList.add('is-success');
+          window.location.href = `mailto:divyansh222f@gmail.com?subject=${subject}&body=${body}`;
+          this.setStatus(status, 'Opening your email app. You can also email divyansh222f@gmail.com directly.', 'is-success');
+          return;
         }
 
-        form.reset();
-        form.classList.remove('was-validated');
+        this.sending = true;
+
+        if (submitButton) {
+          submitButton.disabled = true;
+        }
+
+        this.setStatus(status, 'Sending your message...');
+
+        const templateParams = {
+          from_name: name,
+          from_email: email,
+          message,
+          reply_to: email,
+          subject: `Portfolio message from ${name}`
+        };
+
+        window.emailjs
+          .send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams, {
+            publicKey: EMAILJS_CONFIG.publicKey
+          })
+          .then(() => {
+            this.setStatus(status, "Message sent! I'll get back to you soon.", 'is-success');
+            form.reset();
+            form.classList.remove('was-validated');
+          })
+          .catch(() => {
+            this.setStatus(
+              status,
+              'Could not send right now. Please email divyansh222f@gmail.com directly.',
+              'is-error'
+            );
+          })
+          .finally(() => {
+            this.sending = false;
+
+            if (submitButton) {
+              submitButton.disabled = false;
+            }
+          });
       });
     }
   };
