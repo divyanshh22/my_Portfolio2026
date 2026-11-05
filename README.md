@@ -44,6 +44,7 @@ portfolio/
         └── skills/
             ├── python.png
             ├── javascript.png
+            ├── sql.png
             ├── django.png
             ├── drf.png
             ├── django-channels.png
@@ -60,12 +61,14 @@ portfolio/
             ├── redis.png
             ├── git.png
             ├── github.png
+            ├── github-actions.png
             ├── docker.png
             ├── postman.png
             ├── nginx.png
             ├── gunicorn.png
             ├── cloudinary.png
-            └── render.png
+            ├── render.png
+            └── pytest.png
 ```
 
 ## Run the site
